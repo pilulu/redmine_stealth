@@ -9,6 +9,9 @@ module RedmineStealth
           safe_attributes :stealth_allowed, if: lambda { |_, current_user|
             current_user.admin? || current_user.stealth_mode_permission? || current_user.stealth_allowed?
           }
+          safe_attributes :stealth_enabled, if: lambda { |_, current_user|
+            current_user.admin? || current_user.stealth_mode_permission? || current_user.stealth_enabled?
+          }
         end
       end
 
